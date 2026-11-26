@@ -20,7 +20,12 @@ export const Nav = ({ locale, t }) => {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > SOLID_AFTER_PX);
-    const closeDrops = () => setOpenDrop(null);
+    // React also listens on document, so stopPropagation can't shield the toggle buttons from this listener:
+    // skip their clicks here instead. Any other click (outside, or on a link inside a dropdown) closes it.
+    const closeDrops = (e) => {
+      if (e.target instanceof Element && e.target.closest('.menu-drop > button')) return;
+      setOpenDrop(null);
+    };
     const onKey = (e) => {
       if (e.key !== 'Escape') return;
       setOpenDrop(null);
@@ -41,10 +46,7 @@ export const Nav = ({ locale, t }) => {
   const blogActive = inBlog ? 'ativo' : undefined;
   const blogCurrent = path === '/' ? 'page' : undefined;
   const dropClass = (name, extra = '') => `menu-drop${extra}${openDrop === name ? ' aberto' : ''}`;
-  const toggleDrop = (name) => (e) => {
-    e.stopPropagation();
-    setOpenDrop((open) => (open === name ? null : name));
-  };
+  const toggleDrop = (name) => () => setOpenDrop((open) => (open === name ? null : name));
   const closeMenu = () => setMenuOpen(false);
 
   return (
