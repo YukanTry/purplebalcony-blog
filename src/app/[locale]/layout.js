@@ -18,6 +18,7 @@ export const viewport = { themeColor: '#3D1A8E', viewportFit: 'cover' };
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   icons: { icon: '/favicon.ico', apple: '/apple-touch-icon.png' },
+  verification: { google: 'sGbufblyu6H3GRMXPmlTyfojo-kMHG3Cnal7P08CMks' },
 };
 
 // The only root layout: same design (base.css), nav and footer as www.
