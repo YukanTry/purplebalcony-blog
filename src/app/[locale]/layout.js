@@ -29,10 +29,9 @@ const SiteLayout = async ({ children, params }) => {
 
   return (
     <html lang={HTML_LANG[locale]} className={fontVariables}>
-      <head>
-        <TrackingHead />
-      </head>
+      <head />
       <body>
+        <TrackingHead />
         <Nav locale={locale} t={t} />
         {children}
         <Footer locale={locale} t={t} />
