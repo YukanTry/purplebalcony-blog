@@ -12,7 +12,8 @@
 
 ## Stack
 - Next.js 16 (App Router), JavaScript, Supabase (public project data, publishable key, server-side only, ISR 600 s).
-- Hosting: Vercel (Hobby first). Lives at blog.purplebalcony.com; www (static, Cloudflare) and app.purplebalcony.com are separate repos.
+  Optional: without the vars the blog builds and shows its "data unavailable" fallbacks.
+- Hosting: Vercel, managed by the client (not us). Lives at blog.purplebalcony.com; www and app are separate repos.
 
 ## Commands
 - Lint: `npx eslint <files>` · Tests: `npm test` (node --test) · Build: `npm run build` (when closing a stage)
@@ -25,5 +26,5 @@
 
 ## Current status
 - Blog ported from purplebalcony-site (branch `seo-programatico-next`) on `seo-programatico-00`: lint, tests, build pass.
-- Pending (owner): SEO Programático snippet for the subdomain (goes in TrackingHead), Search Console verification (layout metadata).
-- Launch: Vercel deploy → CNAME on Cloudflare → test live → 301s from www (/blog, /blog.html, the 3 articles).
+- Our scope: content (articles, programmatic SEO pages) + the SEO Programático tag (`blog.purplebalcony.com`, in TrackingHead).
+- Client's scope: Vercel (deploy, env vars), GSC and GA4 properties, CNAME, and the 301s from www.

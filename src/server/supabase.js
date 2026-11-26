@@ -1,4 +1,4 @@
-import { env } from '@/config/env';
+import { env, isSupabaseConfigured } from '@/config/env';
 import { AppError } from '@/server/http/AppError';
 
 // PostgREST over fetch with the publishable key: same role and RLS as the legacy browser calls, but server-side.
@@ -12,6 +12,7 @@ const authHeaders = () => ({
 export const storageUrl = (bucket, path) => `${env.SUPABASE_URL}/storage/v1/object/public/${bucket}/${path}`;
 
 export const selectRows = async (table, query, { revalidate } = {}) => {
+  if (!isSupabaseConfigured) throw new AppError('SUPABASE_NOT_CONFIGURED', 'Supabase is not configured', 503);
   const res = await fetch(`${env.SUPABASE_URL}/rest/v1/${table}?${query}`, {
     headers: authHeaders(),
     next: { revalidate },

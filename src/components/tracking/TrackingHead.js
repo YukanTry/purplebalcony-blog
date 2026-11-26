@@ -1,4 +1,4 @@
-import { GTM_ID, META_PIXEL_ID } from '@/lib/tracking';
+import { GTM_ID, META_PIXEL_ID, SEO_PROGRAMATICO_SITE } from '@/lib/tracking';
 
 // Rendered inside <head> on the server so the tags are in the HTML, not injected later.
 const GTM_SNIPPET = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${GTM_ID}');`;
@@ -9,5 +9,6 @@ export const TrackingHead = () => (
   <>
     <script id="gtm" dangerouslySetInnerHTML={{ __html: GTM_SNIPPET }} />
     <script id="meta-pixel" dangerouslySetInnerHTML={{ __html: META_PIXEL_SNIPPET }} />
+    <script src="https://app.seo-programatico.com/an.js" data-site={SEO_PROGRAMATICO_SITE} defer />
   </>
 );

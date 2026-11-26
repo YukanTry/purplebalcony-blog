@@ -1,7 +1,7 @@
 // First-party tracking (Supabase edge function) + the IDs of the third-party tags.
 export const GTM_ID = 'GTM-NTGDM5CS';
 export const META_PIXEL_ID = '1107440042002357';
-// The SEO Programático tag for blog.purplebalcony.com goes in TrackingHead once its snippet is issued.
+export const SEO_PROGRAMATICO_SITE = 'blog.purplebalcony.com';
 
 const TRACK_URL = 'https://xabqystmncbfxfvoqcpm.supabase.co/functions/v1/track-event';
 const UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term', 'fbclid', 'ref'];
