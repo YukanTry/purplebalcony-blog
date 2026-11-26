@@ -1,0 +1,58 @@
+/* Hero das páginas secundárias */
+.hero-pagina{padding-bottom:104px}
+.hero-pagina .cta-hero{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero-pagina .btn-outline{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.45)}
+.hero-pagina .btn-outline:hover{background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1.5px #fff}
+@media (max-width:720px){.hero-pagina{padding-bottom:72px}.hero-pagina .cta-hero .btn{flex:1 1 100%}}
+
+/* Fecho */
+.fecho-caixa{background:var(--purple-dark);color:#fff;border-radius:var(--r-xl);padding:clamp(32px,5vw,64px);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:end}
+.fecho-caixa h2{color:#fff}
+.fecho-caixa h2 em{color:var(--gold)}
+.fecho-caixa p{color:rgba(255,255,255,.8);max-width:46ch}
+.fecho-caixa .acoes{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px}
+.fecho-caixa .btn-outline{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.45)}
+.fecho-caixa .btn-outline:hover{background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1.5px #fff}
+@media (max-width:1024px){.fecho-caixa{grid-template-columns:1fr}}
+@media (max-width:720px){.fecho-caixa{padding:28px 20px;border-radius:var(--r-lg)}.fecho-caixa .acoes .btn{flex:1 1 100%}}
+
+/* Cartões de artigo */
+.artigos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+.artigo-card{background:#fff;border-radius:var(--r-lg);box-shadow:0 0 0 1px var(--border);transition:box-shadow .3s var(--ease),transform .3s var(--ease)}
+.artigo-card:hover{box-shadow:0 0 0 1px var(--purple-pale),var(--shadow-lg);transform:translateY(-2px)}
+.artigo-link{display:flex;flex-direction:column;height:100%;padding:8px;text-decoration:none;color:inherit}
+.artigo-foto{position:relative;aspect-ratio:16/9;border-radius:var(--r-md);background:var(--purple-pale) center/cover}
+.artigo-foto .badge{position:absolute;top:10px;left:10px}
+.artigo-corpo{padding:18px 14px 14px;display:flex;flex-direction:column;gap:10px;flex:1}
+.artigo-corpo h3{font:700 21px/1.25 var(--serif);letter-spacing:-.02em}
+.artigo-corpo p{font-size:15px;color:rgba(15,8,32,.7)}
+.artigo-meta{margin-top:auto;padding-top:8px;font-size:13.5px;color:var(--muted)}
+.artigo-meta strong{color:var(--purple);font-weight:600;margin-left:4px}
+@media (max-width:720px){.artigos{grid-template-columns:1fr}}
+
+/* Artigo */
+.hero-artigo{padding-bottom:88px}
+.hero-artigo h1{max-width:20ch;margin-left:auto;margin-right:auto;font-size:clamp(34px,4.6vw,58px)}
+.hero-artigo .meta-artigo{margin-top:18px;font-size:14px;color:rgba(255,255,255,.72)}
+.hero-artigo .meta-artigo .n-pf{color:#fff}
+.voltar{display:inline-flex;align-items:center;min-height:44px;font-weight:600;font-size:14px;color:var(--purple);text-decoration:none}
+.voltar:hover{text-decoration:underline}
+.artigo-capa{max-width:880px;margin:-56px auto 0;aspect-ratio:16/8;border-radius:var(--r-xl);background:var(--purple-pale) center/cover;box-shadow:var(--shadow-lg);position:relative;z-index:2}
+.texto{max-width:680px;margin:0 auto;font-size:18px;line-height:1.7;color:rgba(15,8,32,.86)}
+.texto .lead{font-size:clamp(19px,1.6vw,22px);line-height:1.55;color:var(--ink);font-weight:600}
+.texto h2{font-size:clamp(24px,2.4vw,30px);line-height:1.2;margin:44px 0 14px}
+.texto p + p{margin-top:16px}
+.texto ul{margin:18px 0 0;padding-left:0;list-style:none;display:grid;gap:12px}
+.texto li{position:relative;padding-left:22px}
+.texto li::before{content:"";position:absolute;left:0;top:.72em;width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.texto strong{color:var(--ink);font-weight:700}
+.artigo-aviso{max-width:680px;margin:40px auto 0;padding-top:20px;border-top:1px solid var(--border);font-size:13.5px;color:var(--muted)}
+.mais-artigos{margin-top:8px}
+.caso{margin-top:40px;border-radius:var(--r-lg);background:var(--purple-pale);padding:26px}
+.caso h3{margin-top:12px;font:700 20px/1.25 var(--sans);letter-spacing:-.015em}
+.caso dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
+.caso dt{font-size:13px;color:var(--muted)}
+.caso dd{font:700 22px/1.2 var(--numeros);color:var(--purple)}
+.caso > p{margin-top:14px;font-size:13.5px;color:var(--muted)}
+.caso .estado-dados{margin-top:16px;font-size:15px;color:var(--muted)}
+@media (max-width:720px){.texto{font-size:17px}.artigo-capa{margin-top:-40px;border-radius:var(--r-lg);aspect-ratio:16/10}.caso dl{grid-template-columns:1fr 1fr}}

@@ -1,0 +1,6 @@
+/* Same secondary-page hero as who-we-are / blog. */
+.hero-pagina{padding-bottom:104px}
+.hero-pagina .cta-hero{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero-pagina .btn-outline{background:transparent;color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.45)}
+.hero-pagina .btn-outline:hover{background:rgba(255,255,255,.08);box-shadow:inset 0 0 0 1.5px #fff}
+@media (max-width:720px){.hero-pagina{padding-bottom:72px}.hero-pagina .cta-hero .btn{flex:1 1 100%}}
