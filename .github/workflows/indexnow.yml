@@ -1,0 +1,62 @@
+name: Notify IndexNow
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for Vercel deploy
+        run: sleep 60
+
+      - name: Submit sitemap URLs to IndexNow
+        run: |
+          SITEMAP_URL="https://blog.purplebalcony.com/sitemap.xml"
+          KEY="342c45c5287c49f6b5d9eef2f663eec9"
+          HOST="blog.purplebalcony.com"
+          KEY_LOCATION="https://blog.purplebalcony.com/${KEY}.txt"
+
+          # Fetch sitemap and extract all <loc> URLs
+          URLS=$(curl -s "$SITEMAP_URL" | grep -oP '(?<=<loc>)[^<]+')
+
+          if [ -z "$URLS" ]; then
+            echo "No URLs found in sitemap, skipping."
+            exit 0
+          fi
+
+          # Build JSON array
+          URL_JSON=$(echo "$URLS" | python3 -c "
+          import sys, json
+          urls = [line.strip() for line in sys.stdin if line.strip()]
+          print(json.dumps(urls))
+          ")
+
+          PAYLOAD=$(python3 -c "
+          import json
+          data = {
+            'host': '$HOST',
+            'key': '$KEY',
+            'keyLocation': '$KEY_LOCATION',
+            'urlList': $URL_JSON
+          }
+          print(json.dumps(data))
+          ")
+
+          echo "Submitting $(echo "$URLS" | wc -l) URLs to IndexNow..."
+
+          HTTP_STATUS=$(curl -s -o /tmp/indexnow_response.txt -w "%{http_code}" \
+            -X POST "https://api.indexnow.org/indexnow" \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "$PAYLOAD")
+
+          echo "Response status: $HTTP_STATUS"
+          cat /tmp/indexnow_response.txt
+
+          if [ "$HTTP_STATUS" = "200" ] || [ "$HTTP_STATUS" = "202" ]; then
+            echo "IndexNow submission successful."
+          else
+            echo "IndexNow submission failed with status $HTTP_STATUS"
+            exit 1
+          fi
